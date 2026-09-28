@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nama": "Fauzan Zainul Arifin",
+    "nim": "240160221014",
+    "jurusan": "Informatika"
+  },
+  {
+    "id": 2,
+    "nama": "Faishal Rizky F",
+    "nim": "240160221013",
+    "jurusan": "Informatika"
+  },
+  {
+    "id": 3,
+    "nama": "Devaldy Zikri S",
+    "nim": "240160221012",
+    "jurusan": "Informatika"
+  }
+]
