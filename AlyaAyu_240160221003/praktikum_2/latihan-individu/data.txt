@@ -1,0 +1,2 @@
+Data ini dibaca secara asynchronous oleh demo-async.js.
+Materi Pertemuan 2 — Pemrograman Web Backend.
