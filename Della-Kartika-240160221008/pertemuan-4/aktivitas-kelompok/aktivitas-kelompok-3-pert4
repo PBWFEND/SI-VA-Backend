@@ -1,0 +1,423 @@
+# Tugas Kelompok — Pertemuan 4
+
+## Anggota Kelompok 1
+1. Della Kartika
+2. Nadya Zahra Aulia
+3. Rico Muhammad F
+4. Nabila Ratasya Putri
+
+## 1. Pemetaan Alur
+
+Pada Pertemuan 3, route dibuat menggunakan modul `node:http`. Pada Pertemuan 4, salah satu route tersebut diubah menggunakan **Express.js** agar proses routing dan middleware menjadi lebih sederhana.
+
+Route yang digunakan adalah:
+
+```text
+GET /students
+```
+
+### Alur Request
+
+```text
+Client
+   ↓
+HTTP Request
+   ↓
+Logger Middleware
+   ↓
+JSON Parser
+   ↓
+Route GET /students
+   ↓
+Response JSON
+   ↓
+Client
+```
+
+Pada Express, request akan melewati middleware sesuai urutan yang ditulis di dalam kode. Setelah melewati middleware, request akan diproses oleh route yang sesuai.
+
+### Contoh Route Express
+
+```javascript
+app.get("/students", (request, response) => {
+  response.status(200).json({
+    success: true,
+    data: students,
+  });
+});
+```
+
+---
+
+# 2. Susunan Middleware
+
+Urutan middleware yang digunakan adalah:
+
+```text
+1. Logger
+2. JSON Parser
+3. Route
+4. 404 Handler
+5. Error Handler
+```
+
+### Penjelasan Urutan
+
+**1. Logger**
+
+Logger ditempatkan di awal agar setiap request yang masuk dapat dicatat sebelum diproses.
+
+```javascript
+app.use((request, response, next) => {
+  console.log(
+    `${request.method} ${request.originalUrl}`
+  );
+
+  next();
+});
+```
+
+**2. JSON Parser**
+
+JSON parser digunakan agar server dapat membaca request body dalam format JSON.
+
+```javascript
+app.use(express.json());
+```
+
+**3. Route**
+
+Setelah middleware, request diteruskan ke route yang sesuai.
+
+Contoh:
+
+```javascript
+app.get("/students", (request, response) => {
+  response.status(200).json({
+    success: true,
+    data: students,
+  });
+});
+```
+
+**4. 404 Handler**
+
+Jika tidak ada route yang sesuai, request akan diteruskan ke handler 404.
+
+```javascript
+app.use((request, response) => {
+  response.status(404).json({
+    success: false,
+    message: "Endpoint tidak ditemukan",
+  });
+});
+```
+
+**5. Error Handler**
+
+Error handler ditempatkan paling akhir untuk menangani error yang terjadi selama proses request.
+
+```javascript
+app.use((error, request, response, next) => {
+  response.status(500).json({
+    success: false,
+    message: "Terjadi kesalahan pada server",
+  });
+});
+```
+
+---
+
+# 3. Contoh Implementasi
+
+Contoh sederhana Express yang digunakan:
+
+```javascript
+import express from "express";
+
+const app = express();
+const port = 3004;
+
+const students = [
+  {
+    id: 1,
+    nim: "240160221008",
+    nama: "Della Kartika",
+  },
+  {
+    id: 2,
+    nim: "240160221012",
+    nama: "Faishal Rizky F",
+  },
+];
+
+app.use((request, response, next) => {
+  console.log(
+    `${request.method} ${request.originalUrl}`
+  );
+
+  next();
+});
+
+app.use(express.json());
+
+app.get("/students", (request, response) => {
+  response.status(200).json({
+    success: true,
+    total: students.length,
+    data: students,
+  });
+});
+
+app.use((request, response) => {
+  response.status(404).json({
+    success: false,
+    message: "Endpoint tidak ditemukan",
+  });
+});
+
+app.use((error, request, response, next) => {
+  console.error(error);
+
+  response.status(500).json({
+    success: false,
+    message: "Terjadi kesalahan pada server",
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Server berjalan di http://localhost:${port}`);
+});
+```
+
+---
+
+# 4. Pengujian Request Menggunakan Curl
+
+Pengujian dilakukan menggunakan `curl` untuk memastikan route dapat menangani beberapa kondisi request.
+
+## 4.1 Request Valid
+
+**Method:**
+
+```text
+GET
+```
+
+**URL:**
+
+```text
+http://localhost:3004/students
+```
+
+**Perintah:**
+
+```bash
+curl http://localhost:3004/students
+```
+
+**Status Code:**
+
+```text
+200 OK
+```
+
+**Response JSON:**
+
+```json
+{
+  "success": true,
+  "total": 2,
+  "data": [
+    {
+      "id": 1,
+      "nim": "240160221008",
+      "nama": "Della Kartika"
+    },
+    {
+      "id": 2,
+      "nim": "240160221012",
+      "nama": "Faishal Rizky F"
+    }
+  ]
+}
+```
+
+**Keterangan:**
+Request berhasil karena endpoint `/students` tersedia dan dapat mengembalikan data students.
+
+---
+
+## 4.2 Body Tidak Lengkap
+
+Untuk menguji body tidak lengkap, digunakan endpoint POST sederhana.
+
+**Method:**
+
+```text
+POST
+```
+
+**URL:**
+
+```text
+http://localhost:3004/students
+```
+
+**Perintah:**
+
+```bash
+curl -X POST http://localhost:3004/students -H "Content-Type: application/json" -d "{\"nama\":\"Mahasiswa Baru\"}"
+```
+
+**Status Code:**
+
+```text
+400 Bad Request
+```
+
+**Response JSON:**
+
+```json
+{
+  "success": false,
+  "message": "nim dan nama wajib diisi"
+}
+```
+
+**Keterangan:**
+Request ditolak karena data yang dikirim tidak lengkap.
+
+---
+
+## 4.3 Parameter Tidak Ditemukan
+
+Untuk menguji parameter yang tidak ditemukan digunakan:
+
+**Method:**
+
+```text
+GET
+```
+
+**URL:**
+
+```text
+http://localhost:3004/students/99
+```
+
+**Perintah:**
+
+```bash
+curl http://localhost:3004/students/99
+```
+
+**Status Code:**
+
+```text
+404 Not Found
+```
+
+**Response JSON:**
+
+```json
+{
+  "success": false,
+  "message": "Student tidak ditemukan"
+}
+```
+
+**Keterangan:**
+ID `99` tidak terdapat pada data students sehingga server memberikan status `404`.
+
+---
+
+## 4.4 Endpoint Tidak Tersedia
+
+**Method:**
+
+```text
+GET
+```
+
+**URL:**
+
+```text
+http://localhost:3004/salah
+```
+
+**Perintah:**
+
+```bash
+curl http://localhost:3004/salah
+```
+
+**Status Code:**
+
+```text
+404 Not Found
+```
+
+**Response JSON:**
+
+```json
+{
+  "success": false,
+  "message": "Endpoint tidak ditemukan"
+}
+```
+
+**Keterangan:**
+Endpoint `/salah` tidak dibuat sehingga request ditangani oleh middleware 404.
+
+---
+
+# 5. Rekapitulasi Hasil Pengujian
+
+| No | Method | URL            | Status Code | Hasil                              |
+| -- | ------ | -------------- | ----------- | ---------------------------------- |
+| 1  | GET    | `/students`    | 200         | Data students berhasil ditampilkan |
+| 2  | POST   | `/students`    | 400         | Body tidak lengkap                 |
+| 3  | GET    | `/students/99` | 404         | Student tidak ditemukan            |
+| 4  | GET    | `/salah`       | 404         | Endpoint tidak tersedia            |
+
+---
+
+# 6. Alasan Penggunaan Status Code
+
+Status code digunakan sesuai dengan kondisi request.
+
+* **200 OK** digunakan ketika request berhasil dan data dapat dikembalikan.
+* **400 Bad Request** digunakan ketika data yang dikirim oleh client tidak lengkap atau tidak sesuai.
+* **404 Not Found** digunakan ketika data atau endpoint yang diminta tidak ditemukan.
+* **500 Internal Server Error** digunakan untuk menangani kesalahan yang terjadi pada server.
+
+Penggunaan status code tersebut membantu client mengetahui hasil dari request yang dikirim.
+
+---
+
+# 7. Alasan Penempatan Middleware
+
+Urutan middleware dibuat dari proses yang umum menuju proses yang lebih khusus.
+
+**Logger** ditempatkan paling awal agar semua request dapat dicatat.
+
+**JSON parser** ditempatkan setelah logger agar request body JSON dapat dibaca oleh route yang membutuhkan data tersebut.
+
+**Route** digunakan untuk memproses request sesuai URL dan method.
+
+**404 handler** ditempatkan setelah semua route karena hanya dijalankan jika tidak ada route yang cocok.
+
+**Error handler** ditempatkan paling akhir agar dapat menangani error dari middleware atau route sebelumnya.
+
+Urutan tersebut membuat alur request lebih terstruktur dan mudah dipahami.
+
+---
+
+# 8. Kesimpulan
+
+Berdasarkan praktik yang dilakukan, route dari `node:http` pada Pertemuan 3 dapat dipindahkan ke Express.js dengan lebih sederhana.
+
+Express menyediakan middleware dan routing yang membuat pengelolaan request menjadi lebih mudah. Pengujian menggunakan `curl` menunjukkan bahwa route dapat menangani request berhasil, body tidak lengkap, parameter yang tidak ditemukan, serta endpoint yang tidak tersedia.
+
+Dari hasil review, penggunaan middleware dan status code yang tepat membuat API lebih terstruktur dan memudahkan client memahami response dari server.
