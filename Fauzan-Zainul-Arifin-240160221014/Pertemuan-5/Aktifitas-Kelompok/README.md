@@ -333,12 +333,4 @@ PUT dan PATCH dibedakan untuk memperjelas apakah data diperbarui secara keseluru
 
 Perancangan RESTful API perlu memperhatikan hubungan antara resource, URL, HTTP method, request body, response, dan status code. Kontrak yang konsisten mempermudah implementasi, pengujian, integrasi frontend, serta pemeliharaan sistem.
 
-## 9. Catatan Penyesuaian
 
-Sebelum dikumpulkan:
-
-1. Sesuaikan domain dan tiga resource dengan domain yang benar-benar dipilih dari Tugas 1.
-2. Sesuaikan atribut dan contoh data dengan rancangan kelompok.
-3. Lakukan pemeriksaan silang dengan kelompok lain.
-4. Ganti checklist dan hasil pengujian dengan hasil yang benar-benar diperoleh.
-5. Lampirkan minimal lima contoh request-response sesuai instruksi aktivitas.
