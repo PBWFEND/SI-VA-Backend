@@ -1,0 +1,13 @@
+{
+  "name": "tugas-3-restful-api",
+  "version": "1.0.0",
+  "description": "Tugas 3 RESTful API Express.js - Yosep Adipura H",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

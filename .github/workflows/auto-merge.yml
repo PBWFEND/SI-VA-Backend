@@ -1,0 +1,181 @@
+name: Auto-merge student PR
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, labeled]
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: guard-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    steps:
+      - name: Safety check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          FAIL_MSG=""
+          fail() { FAIL_MSG="${FAIL_MSG}
+          - $1"; }
+
+          [ "${BASE_REF:-}" = "main" ] || fail "base branch harus main, bukan ${BASE_REF:-?}"
+
+          MERGEABLE="unknown"
+          for _ in $(seq 1 12); do
+            MERGEABLE=$(gh api "repos/$REPO/pulls/$PR_NUMBER" --jq '.mergeable // "unknown"')
+            case "$MERGEABLE" in true|false) break ;; *) sleep 10 ;; esac
+          done
+          [ "$MERGEABLE" = "true" ] || fail "PR belum mergeable (status=$MERGEABLE, kemungkinan conflict). Sinkronkan branch dengan main terbaru lalu push lagi."
+
+          AUTHOR_NIM=$(tr -cs '0-9' '\n' <<<"$AUTHOR" | grep -E '^2401[0-9]{7,}$' | head -n1 || true)
+          ALLOWED="$AUTHOR_NIM"
+          if [ -z "$ALLOWED" ]; then
+            echo "WARNING: author $AUTHOR tidak memuat NIM, cek folder-sendiri nonaktif"
+          fi
+
+          FILES_TSV=$(gh api --paginate "repos/$REPO/pulls/$PR_NUMBER/files" \
+            --jq '.[] | [.status, .filename, (.previous_filename // ""), .deletions, .additions] | @tsv')
+
+          TOTAL_FILES=$(grep -cve '^[[:space:]]*$' <<<"$FILES_TSV" || true)
+          if [ "$TOTAL_FILES" -eq 0 ]; then
+            fail "PR tidak membawa perubahan file"
+          fi
+
+          # Deteksi node_modules (file ter-commit)
+          NM_FILES=$(grep -c '/node_modules/' <<<"$FILES_TSV" || true)
+          NM_MSG=""
+          if [ "$NM_FILES" -gt 0 ]; then
+            NM_ROOTS=$(awk -F'\t' 'NR>0 && $0 ~ "/node_modules/" {print $2}' <<<"$FILES_TSV" \
+              | sed -E 's#/node_modules(/.*)$#/node_modules#' | sort -u | head -n5)
+            fail "node_modules ter-commit ($NM_FILES file). Jangan commit node_modules."
+            NM_MSG="
+          
+          📦 **node_modules ter-commit ($NM_FILES file)** — hapus dari git (tetap ada di lokal), lalu push:
+          
+          \`\`\`bash
+          $(while read -r r; do [ -n "$r" ] && echo "git rm -r --cached \"$r\""; done <<<"$NM_ROOTS")
+          echo 'node_modules/' >> .gitignore
+          git add .gitignore
+          git commit -m 'hapus node_modules dari repo'
+          git push
+          \`\`\`
+          
+          > \`.gitignore\` cuma mencegah file baru; file yang sudah di-track tetap perlu \`git rm --cached\` di atas."
+          fi
+
+          if [ "$TOTAL_FILES" -gt 200 ]; then
+            fail "PR terlalu besar ($TOTAL_FILES file, batas 200)"
+          fi
+
+          TOTAL_DEL=$(awk -F'\t' '{d+=$4} END {print d+0}' <<<"$FILES_TSV")
+          if [ "$TOTAL_DEL" -gt 500 ]; then
+            fail "total $TOTAL_DEL baris terhapus (>500), perlu review manual"
+          fi
+
+          # Deteksi conflict marker via diff PR (sekali panggil, fork-safe, tanpa checkout)
+          PR_DIFF=$(gh api "repos/$REPO/pulls/$PR_NUMBER" -H "Accept: application/vnd.github.v3.diff" 2>/dev/null || true)
+          MARKER_FILE=""
+          if [ -n "$PR_DIFF" ]; then
+            CUR=""
+            while IFS= read -r line; do
+              case "$line" in
+                "diff --git a/"*)
+                  CUR="${line##* b/}"
+                  ;;
+                "+"*)
+                  rest="${line:1}"
+                  case "$rest" in
+                    "<<<<<<<"*|">>>>>>>"*|"|||||||"*)
+                      MARKER_FILE="$CUR"; break ;;
+                  esac
+                  ;;
+              esac
+            done <<< "$PR_DIFF"
+          fi
+          if [ -n "$MARKER_FILE" ]; then
+            fail "berisi conflict marker: $MARKER_FILE"
+          fi
+
+          while IFS=$'\t' read -r status filename prev _del _add; do
+            [ -n "${status:-}" ] || continue
+            if [ "$status" = "removed" ]; then
+              fail "menghapus file: $filename"
+            fi
+            case "$filename" in
+              README.md|.gitignore|.github/*) fail "menyentuh file lindung repo: $filename" ;;
+            esac
+            for p in "$filename" ${prev:+"$prev"}; do
+              nims=$(tr -cs '0-9' '\n' <<<"$p" | grep -E '^2401[0-9]{7,}$' | sort -u || true)
+              for nim in $nims; do
+                if [ -n "$ALLOWED" ] && [ "$nim" != "$ALLOWED" ]; then
+                  fail "menyentuh data mahasiswa lain ($nim): $p"
+                fi
+              done
+            done
+          done <<<"$FILES_TSV"
+
+          OLD_IDS=$(gh api --paginate "repos/$REPO/issues/$PR_NUMBER/comments" \
+            --jq '.[] | select(.user.login=="github-actions[bot]") | select((.body // "") | contains("Auto-merge")) | .id' || true)
+          for cid in $OLD_IDS; do
+            gh api -X DELETE "repos/$REPO/issues/comments/$cid" --silent >/dev/null 2>&1 || true
+          done
+
+          if [ -n "$FAIL_MSG" ]; then
+            gh pr comment "$PR_NUMBER" --repo "$REPO" \
+              --body "❌ Auto-merge ditolak, perlu review manual:$FAIL_MSG$NM_MSG" >/dev/null
+            echo "Safety check GAGAL:$FAIL_MSG"
+            exit 1
+          fi
+          echo "Safety check LOLOS ($TOTAL_FILES file, $TOTAL_DEL baris hapus)."
+
+  auto-merge:
+    needs: guard
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    concurrency:
+      group: auto-merge-main-merge
+      cancel-in-progress: false
+    steps:
+      - name: Merge PR yang lolos guard
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          HAS_LABEL: ${{ contains(github.event.pull_request.labels.*.name, 'auto-merge') }}
+        run: |
+          set -euo pipefail
+          STATE=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json state --jq .state)
+          if [ "$STATE" != "OPEN" ]; then
+            echo "PR sudah $STATE, skip."
+            exit 0
+          fi
+          AUTHOR_NIM=$(tr -cs '0-9' '\n' <<<"$AUTHOR" | grep -E '^2401[0-9]{7,}$' | head -n1 || true)
+          if [ -z "$AUTHOR_NIM" ] && [ "$HAS_LABEL" != "true" ]; then
+            echo "Skip: login $AUTHOR tidak memuat NIM dan tanpa label auto-merge."
+            exit 0
+          fi
+
+          gh pr merge "$PR_NUMBER" --repo "$REPO" --merge || true
+
+          STATE=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json state --jq .state)
+          if [ "$STATE" = "MERGED" ]; then
+            gh pr comment "$PR_NUMBER" --repo "$REPO" \
+              --body "✅ Auto-merge sukses, safety check lolos." >/dev/null || true
+            echo "PR #$PR_NUMBER merged."
+          else
+            echo "::error::Gagal merge PR #$PR_NUMBER (state=$STATE)"
+            exit 1
+          fi

@@ -1,0 +1,13 @@
+{
+  "name": "prak-backend-pertemuan-04",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node latihan.js",
+    "dev": "node --watch latihan.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
