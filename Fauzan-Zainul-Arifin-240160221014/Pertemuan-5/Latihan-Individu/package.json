@@ -1,0 +1,18 @@
+
+{
+  "name": "latihan-individu",
+  "version": "1.0.0",
+  "description": "Latihan RESTful API mahasiswa - Pertemuan 5",
+  "main": "latihan.js",
+  "scripts": {
+    "start": "node latihan.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
