@@ -11,7 +11,8 @@ REPO = "PBWFEND/SI-VA-Backend"
 README = "README.md"
 START = "<!-- ALL-CONTRIBUTORS-LIST:START -->"
 END = "<!-- ALL-CONTRIBUTORS-LIST:END -->"
-MAINTAINERS = {"yysofiyan"}
+MAINTAINERS = {"yysofiyan", "yysBotX"}
+BOT_LABELS = {"yysBotX": "Bot/Maintainer"}
 NIM_RE = re.compile(r"2401\d{7,}")
 
 
@@ -57,7 +58,12 @@ def nim_of(login, name, pr_refs):
 
 def cell(c, name, nim):
     login = c["login"]
-    role = "Dosen" if login in MAINTAINERS else (nim or "Mahasiswa")
+    if login in BOT_LABELS:
+        role = BOT_LABELS[login]
+    elif login in MAINTAINERS:
+        role = "Dosen"
+    else:
+        role = nim or "Mahasiswa"
     return f"""    <td align="center">
       <a href="{c["html_url"]}">
         <img src="{c["avatar_url"]}&s=200" width="100px;" alt="{login}"/><br>
@@ -102,7 +108,7 @@ def add_missing(cs, known, logins):
         c = user_profile(login)
         if c:
             cs.append(c)
-            known.add(login)
+            known.add(c["login"])
 
 
 def git_author_names():
@@ -126,7 +132,14 @@ def collect_contributors():
     pr_refs = pr_refs_map()
     add_missing(cs, known, pr_refs)
     add_missing(cs, known, git_author_names())
-    return cs, pr_refs
+    # Dedup final: jaga jika login sama muncul dari beberapa sumber
+    seen = set()
+    deduped = []
+    for c in cs:
+        if c["login"] not in seen:
+            seen.add(c["login"])
+            deduped.append(c)
+    return deduped, pr_refs
 
 
 def build_table(cs, pr_refs):
