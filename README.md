@@ -15,27 +15,27 @@
       <sub>Dosen</sub>
     </td>
     <td align="center">
+      <a href="https://github.com/fauzanzainularifin">
+        <img src="https://avatars.githubusercontent.com/u/275631557?v=4&s=200" width="100px;" alt="fauzanzainularifin"/><br>
+        <sub><b>240160221014</b></sub>
+      </a><br>
+      <sub>240160221014</sub>
+    </td>
+    <td align="center">
       <a href="https://github.com/240160221044-cpu">
         <img src="https://avatars.githubusercontent.com/u/267661710?v=4&s=200" width="100px;" alt="240160221044-cpu"/><br>
         <sub><b>Sandika Yusuf Permana</b></sub>
       </a><br>
       <sub>240160221044</sub>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="https://github.com/240160221028-hash">
         <img src="https://avatars.githubusercontent.com/u/267646103?v=4&s=200" width="100px;" alt="240160221028-hash"/><br>
         <sub><b>Muhammad Zaky</b></sub>
       </a><br>
       <sub>240160221028</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/fauzanzainularifin">
-        <img src="https://avatars.githubusercontent.com/u/275631557?v=4&s=200" width="100px;" alt="fauzanzainularifin"/><br>
-        <sub><b>240160221014</b></sub>
-      </a><br>
-      <sub>240160221014</sub>
     </td>
     <td align="center">
       <a href="https://github.com/240160221008-lab">
@@ -84,12 +84,21 @@
       <sub>240160221003</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/Devaldy12">
-        <img src="https://avatars.githubusercontent.com/u/273492452?v=4&s=200" width="100px;" alt="Devaldy12"/><br>
-        <sub><b>Devaldy12</b></sub>
+      <a href="https://github.com/yysBotX">
+        <img src="https://avatars.githubusercontent.com/u/294550100?v=4&s=200" width="100px;" alt="yysBotX"/><br>
+        <sub><b>yysBotX</b></sub>
       </a><br>
-      <sub>240160221050</sub>
+      <sub>240160221011</sub>
     </td>
+    <td align="center">
+      <a href="https://github.com/NabillaNatasya">
+        <img src="https://avatars.githubusercontent.com/u/274437981?v=4&s=200" width="100px;" alt="NabillaNatasya"/><br>
+        <sub><b>Nabilla Natasya Putri</b></sub>
+      </a><br>
+      <sub>240160221029</sub>
+    </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="https://github.com/240160221011-FaatinAshri">
         <img src="https://avatars.githubusercontent.com/u/273489076?v=4&s=200" width="100px;" alt="240160221011-FaatinAshri"/><br>
@@ -97,8 +106,13 @@
       </a><br>
       <sub>240160221011</sub>
     </td>
-  </tr>
-  <tr>
+    <td align="center">
+      <a href="https://github.com/Devaldy12">
+        <img src="https://avatars.githubusercontent.com/u/273492452?v=4&s=200" width="100px;" alt="Devaldy12"/><br>
+        <sub><b>Devaldy12</b></sub>
+      </a><br>
+      <sub>240160221050</sub>
+    </td>
     <td align="center">
       <a href="https://github.com/240160221038-ResaKhoerunnisa">
         <img src="https://avatars.githubusercontent.com/u/273454722?v=4&s=200" width="100px;" alt="240160221038-ResaKhoerunnisa"/><br>
@@ -106,6 +120,8 @@
       </a><br>
       <sub>240160221038</sub>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="https://github.com/240160221041-Rissa">
         <img src="https://avatars.githubusercontent.com/u/273492323?v=4&s=200" width="100px;" alt="240160221041-Rissa"/><br>
@@ -114,20 +130,18 @@
       <sub>240160221041</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/deLLa">
-        <img src="https://avatars.githubusercontent.com/u/1296378?v=4&s=200" width="100px;" alt="deLLa"/><br>
-        <sub><b>deLLa</b></sub>
-      </a><br>
-      <sub>240160221048</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
       <a href="https://github.com/kifu">
         <img src="https://avatars.githubusercontent.com/u/136690241?v=4&s=200" width="100px;" alt="kifu"/><br>
         <sub><b>sai</b></sub>
       </a><br>
       <sub>240160221014</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/deLLa">
+        <img src="https://avatars.githubusercontent.com/u/1296378?v=4&s=200" width="100px;" alt="deLLa"/><br>
+        <sub><b>deLLa</b></sub>
+      </a><br>
+      <sub>240160221011</sub>
     </td>
   </tr>
 </table>
