@@ -1,0 +1,291 @@
+# Aktivitas Kelompok Pertemuan 2
+
+## Anggota Kelompok 1
+
+1. Della Kartika
+2. Nadya Zahra Aulia
+3. Rico Muhammad F
+4. Nabilla Natasya Putri
+
+---
+
+## Aktivitas 1 — Refactoring Kode
+
+Pada aktivitas pertama, kelompok melakukan refactoring terhadap kode JavaScript lama yang diberikan oleh dosen. Tujuan dari aktivitas ini adalah memahami penggunaan fitur JavaScript modern dan mengetahui alasan teknis penggunaan fitur tersebut dalam membuat kode yang lebih mudah dibaca dan dipelihara.
+
+### Kode Sebelum Refactoring
+
+```js
+function buatPesan(l) {
+  var t = "Total: " + l.reduce(function(a, i) {
+    return a + i.harga * i.jumlah;
+  }, 0);
+  return t;
+}
+```
+
+### Kode Setelah Refactoring
+
+```js
+const buatPesan = (list = []) => {
+  const total = list.reduce(
+    (total, { harga, jumlah }) => total + harga * jumlah,
+    0
+  );
+
+  return `Total: ${total}`;
+};
+```
+
+### Pembahasan
+
+Refactoring dilakukan tanpa mengubah fungsi utama dari program, yaitu menghitung total harga berdasarkan `harga` dan `jumlah` setiap item.
+
+Perubahan yang dilakukan adalah sebagai berikut:
+
+### 1. Arrow Function
+
+Kode:
+
+```js
+function buatPesan(l)
+```
+
+diubah menjadi:
+
+```js
+const buatPesan = (list = []) =>
+```
+
+Arrow function digunakan karena penulisannya lebih ringkas dibandingkan function biasa. Hal ini membuat struktur fungsi lebih sederhana dan mudah dibaca.
+
+### 2. Template Literal
+
+Kode:
+
+```js
+"Total: " + total
+```
+
+diubah menjadi:
+
+```js
+`Total: ${total}`
+```
+
+Template literal digunakan untuk menggabungkan teks dan nilai variabel dengan sintaks yang lebih sederhana. Hal ini membuat kode lebih mudah dibaca dibandingkan menggunakan operator `+`.
+
+### 3. Destructuring
+
+Pada kode awal digunakan:
+
+```js
+i.harga * i.jumlah
+```
+
+Kemudian diubah menjadi:
+
+```js
+{ harga, jumlah }
+```
+
+Destructuring memungkinkan nilai `harga` dan `jumlah` diambil langsung dari object. Penulisan kode menjadi lebih singkat dan tidak perlu berulang kali menuliskan nama object.
+
+### 4. Default Value
+
+Parameter fungsi diubah menjadi:
+
+```js
+list = []
+```
+
+Default value digunakan agar parameter memiliki nilai awal berupa array kosong ketika fungsi dipanggil tanpa memberikan argument. Hal ini membuat fungsi lebih aman digunakan.
+
+### 5. Reduce
+
+`reduce()` tetap digunakan untuk menjumlahkan hasil perkalian `harga` dan `jumlah` dari setiap item.
+
+Pada kode hasil refactoring, callback `reduce()` juga menggunakan arrow function dan destructuring:
+
+```js
+(total, { harga, jumlah }) => total + harga * jumlah
+```
+
+Penulisan tersebut membuat proses perhitungan menjadi lebih ringkas dan mudah dipahami.
+
+### Kesimpulan Aktivitas 1
+
+Dari aktivitas refactoring, kelompok memahami bahwa fitur JavaScript modern dapat membuat kode menjadi lebih ringkas tanpa mengubah fungsi program. Arrow function, template literal, destructuring, dan default value juga dapat membantu meningkatkan keterbacaan serta mempermudah pemeliharaan kode.
+
+---
+
+## Aktivitas 2 — Prediksi Output Synchronous dan Asynchronous
+
+Pada aktivitas kedua, kelompok menganalisis potongan kode yang menggabungkan proses synchronous dan asynchronous. Sebelum menjalankan program, kelompok terlebih dahulu memprediksi urutan output berdasarkan cara kerja JavaScript.
+
+Kode yang dianalisis:
+
+```js
+console.log("1. --- Synchronous vs Asynchronous ---");
+
+console.log("1. mulai (sync)");
+
+setTimeout(() => console.log(
+  "1. [async setTimeout 0ms] ← baru muncul sekarang!"
+), 0);
+
+console.log("1. selesai (sync) ← muncul duluan walau ditulis belakangan");
+```
+
+### Prediksi Kelompok
+
+Sebelum program dijalankan, kelompok memperkirakan urutan output sebagai berikut:
+
+```text
+1. --- Synchronous vs Asynchronous ---
+1. mulai (sync)
+1. selesai (sync) ← muncul duluan walau ditulis belakangan
+1. [async setTimeout 0ms] ← baru muncul sekarang!
+```
+
+Kelompok memperkirakan `mulai` dan `selesai` akan muncul terlebih dahulu karena kedua perintah tersebut merupakan proses synchronous. Sementara itu, callback pada `setTimeout()` merupakan proses asynchronous.
+
+### Hasil Setelah Program Dijalankan
+
+Setelah program dijalankan, hasil yang diperoleh sesuai dengan prediksi kelompok:
+
+```text
+1. --- Synchronous vs Asynchronous ---
+1. mulai (sync)
+1. selesai (sync) ← muncul duluan walau ditulis belakangan
+1. [async setTimeout 0ms] ← baru muncul sekarang!
+```
+
+### Pembahasan
+
+Dari hasil tersebut, kelompok memahami bahwa proses synchronous dijalankan terlebih dahulu sesuai urutan kode.
+
+Walaupun `setTimeout()` diberikan waktu `0 ms`, callback-nya tidak langsung dijalankan. Callback tetap menunggu sampai proses synchronous yang sedang berjalan selesai.
+
+Hal ini menunjukkan bahwa `0 ms` pada `setTimeout()` bukan berarti callback langsung dijalankan, tetapi callback akan diproses setelah kode synchronous selesai.
+
+### Kesimpulan Aktivitas 2
+
+Kelompok memahami bahwa proses synchronous akan diselesaikan terlebih dahulu sebelum callback asynchronous dijalankan. Kelompok juga memahami bahwa `setTimeout()` tetap bersifat asynchronous meskipun delay yang diberikan adalah `0 ms`.
+
+---
+
+## Aktivitas 3 — Paralel vs Sekuensial
+
+Pada aktivitas ketiga, kelompok membandingkan proses asynchronous yang dijalankan secara berurutan dengan proses yang dijalankan secara konkuren menggunakan `Promise.all()`.
+
+Tiga proses yang digunakan memiliki waktu tunda berbeda:
+
+```js
+tunda(300, "data buku")
+tunda(200, "data anggota")
+tunda(100, "data peminjaman")
+```
+
+### Perhitungan Secara Sekuensial
+
+Jika ketiga proses dijalankan secara berurutan, maka waktu yang dibutuhkan adalah penjumlahan dari seluruh waktu tunda:
+
+```text
+300 ms + 200 ms + 100 ms = 600 ms
+```
+
+Jadi, estimasi waktu proses secara sekuensial adalah sekitar **600 ms**.
+
+### Perhitungan Menggunakan Promise.all()
+
+Jika ketiga proses dijalankan menggunakan `Promise.all()`:
+
+```js
+const [buku2, anggota, peminjaman] = await Promise.all([
+  tunda(300, "data buku"),
+  tunda(200, "data anggota"),
+  tunda(100, "data peminjaman"),
+]);
+```
+
+Ketiga proses dapat berjalan secara konkuren. Oleh karena itu, waktu keseluruhan mengikuti proses dengan waktu tunda paling lama, yaitu:
+
+```text
+300 ms
+```
+
+### Prediksi Kelompok
+
+Sebelum menjalankan program, kelompok memperkirakan:
+
+| Metode          |     Perhitungan | Estimasi |
+| --------------- | --------------: | -------: |
+| Sekuensial      | 300 + 200 + 100 |  ±600 ms |
+| `Promise.all()` |   Delay terlama |  ±300 ms |
+
+### Verifikasi Menggunakan `Date.now()`
+
+Untuk mengetahui waktu aktual, digunakan `Date.now()`:
+
+```js
+const mulai = Date.now();
+
+const [buku2, anggota, peminjaman] = await Promise.all([
+  tunda(300, "data buku"),
+  tunda(200, "data anggota"),
+  tunda(100, "data peminjaman"),
+]);
+
+const selesai = Date.now();
+
+console.log("Hasil:", {
+  buku2,
+  anggota,
+  peminjaman,
+});
+
+console.log("Waktu:", selesai - mulai, "ms");
+```
+
+### Hasil Setelah Program Dijalankan
+
+Hasil yang diperoleh menunjukkan bahwa proses dengan `Promise.all()` selesai dalam waktu yang mendekati delay terlama:
+
+```text
+Hasil: {
+  buku2: 'data buku',
+  anggota: 'data anggota',
+  peminjaman: 'data peminjaman'
+}
+
+Waktu: ±300 ms
+```
+
+Waktu aktual dapat sedikit berbeda dari 300 ms karena dipengaruhi oleh proses program dan kondisi komputer saat dijalankan.
+
+### Pembahasan
+
+Dari hasil tersebut, kelompok memahami bahwa `Promise.all()` dapat digunakan ketika beberapa proses asynchronous tidak saling bergantung dan dapat dijalankan secara bersamaan.
+
+Jika proses dilakukan secara sekuensial, proses kedua harus menunggu proses pertama selesai, begitu juga proses ketiga. Akibatnya, seluruh waktu tunda akan dijumlahkan.
+
+Sedangkan dengan `Promise.all()`, ketiga proses dapat berjalan secara konkuren sehingga waktu keseluruhan mendekati proses yang memiliki waktu tunda paling lama.
+
+### Kesimpulan Aktivitas 3
+
+`Promise.all()` cocok digunakan untuk beberapa proses asynchronous yang independen. Penggunaan `Promise.all()` dapat mengurangi waktu tunggu dibandingkan menjalankan proses secara sekuensial.
+
+---
+
+# Kesimpulan
+
+Berdasarkan tiga aktivitas yang telah dilakukan, kelompok memahami penggunaan beberapa fitur JavaScript modern serta konsep asynchronous programming.
+
+Pada **aktivitas refactoring**, kelompok memahami bahwa arrow function, template literal, destructuring, default value, dan `reduce()` dapat membuat kode menjadi lebih ringkas, mudah dibaca, dan lebih mudah dipelihara.
+
+Pada **aktivitas prediksi output**, kelompok memahami bahwa proses synchronous dijalankan terlebih dahulu, sedangkan callback asynchronous seperti `setTimeout()` akan dijalankan setelah proses synchronous selesai meskipun menggunakan delay `0 ms`.
+
+Pada **aktivitas paralel dan sekuensial**, kelompok memahami bahwa `Promise.all()` dapat digunakan untuk menjalankan beberapa proses asynchronous yang independen secara konkuren. Dengan demikian, waktu proses dapat lebih singkat dibandingkan menjalankan proses secara sekuensial.
+
+Secara keseluruhan, aktivitas ini membantu kelompok memahami **kapan suatu fitur JavaScript digunakan serta alasan teknis dalam memilih fitur tersebut**, terutama dalam penulisan kode backend yang lebih ringkas, mudah dibaca, dan efisien.

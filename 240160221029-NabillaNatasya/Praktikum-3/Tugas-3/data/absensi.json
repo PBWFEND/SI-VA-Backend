@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ABS001",
+    "id_anggota": "AGT001",
+    "nama": "Ende",
+    "nim": "2601602210118",
+    "jabatan": "Ketua",
+    "kegiatan": "Rapat UKM",
+    "tanggal": "2026-08-18",
+    "status": "hadir"
+  },
+  {
+    "id": "ABS001",
+    "id_anggota": "AGT002",
+    "nama": "Pingkan",
+    "nim": "260160221015",
+    "jabatan": "Wakil Ketua",
+    "kegiatan": "Rapat UKM",
+    "tanggal": "2026-08-18",
+    "status": "hadir"
+  },
+  {
+    "id": "ABS002",
+    "id_anggota": "AGT003",
+    "nama": "Qeylla",
+    "nim": "260160221014",
+    "jabatan": "Sekretaris",
+    "kegiatan": "Rapat Evaluasi",
+    "tanggal": "2026-08-03",
+    "status": "izin"
+  },
+  {
+    "id": "ABS002",
+    "id_anggota": "AGT004",
+    "nama": "Shifa",
+    "nim": "260160221014",
+    "jabatan": "Bendahara",
+    "kegiatan": "Rapat Evaluasi",
+    "tanggal": "2026-08-03",
+    "status": "hadir"
+  }
+]
