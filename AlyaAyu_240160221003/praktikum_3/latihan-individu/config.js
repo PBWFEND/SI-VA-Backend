@@ -1,0 +1,15 @@
+/**
+ * Pertemuan 3 — Konfigurasi aplikasi Node.js
+ * Tujuan: memisahkan konfigurasi dari kode aplikasi.
+ * Digunakan oleh: server.js dan latihan.js
+ */
+
+export const APP_NAME = process.env.APP_NAME ?? "API Pertemuan 3";
+export const PORT = Number(process.env.PORT ?? 3003);
+export const NODE_ENV = process.env.NODE_ENV ?? "development";
+
+export const getConfig = () => ({
+  appName: APP_NAME,
+  port: PORT,
+  environment: NODE_ENV,
+});
