@@ -1,0 +1,16 @@
+# Abaikan semua folder node_modules di folder manapun
+**/node_modules/
+node_modules/
+
+# Abaikan file env di folder manapun
+**/.env
+.env
+
+# Abaikan database SQLite
+**/*.db
+*.db
+*.db-journal
+
+# Abaikan folder Postman
+postman/
+.postman/
