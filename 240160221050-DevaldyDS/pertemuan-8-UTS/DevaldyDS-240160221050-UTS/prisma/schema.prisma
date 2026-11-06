@@ -1,0 +1,19 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Buku {
+  id      Int    @id @default(autoincrement())
+  judul   String
+  penulis  String
+  tahun    Int
+  stok     Int    @default(0)
+
+  @@map("buku")
+}
