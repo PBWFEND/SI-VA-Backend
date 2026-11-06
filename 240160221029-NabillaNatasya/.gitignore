@@ -1,1 +1,12 @@
 **/node_modules/
+
+# Prisma Generated Clients
+**/generated/
+**/Generated/
+
+# Praktikum lama package-lock.json (Pertemuan 6-7)
+Pertemuan-6/**/package-lock.json
+Pertemuan-7/**/package-lock.json
+
+# File redundan
+Pertemuan-7/tugas-5/src/routes/app.ts
