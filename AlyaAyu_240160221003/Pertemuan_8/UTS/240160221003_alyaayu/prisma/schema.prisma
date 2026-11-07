@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Buku {
+  id      Int    @id @default(autoincrement())
+  judul   String
+  penulis String
+  tahun   Int
+  stok    Int
+}
+
+model Anggota {
+  id      Int    @id @default(autoincrement())
+  nama    String
+  nim     String @unique
+  jurusan String
+}
+
+model Pengguna {
+  id    Int    @id @default(autoincrement())
+  nim   String @unique
+  nama  String
+  email String @unique
+  role  String
+}
