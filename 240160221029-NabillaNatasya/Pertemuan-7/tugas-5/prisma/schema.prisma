@@ -1,0 +1,32 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Anggota {
+  id      Int       @id @default(autoincrement())
+  nim     String    @unique
+  nama    String
+  prodi   String
+  absensi Absensi[]
+
+  @@map("anggota")
+}
+
+model Absensi {
+  id         Int      @id @default(autoincrement())
+  anggotaId  Int
+  tanggal    DateTime
+  waktuMasuk String?
+  status     String
+  keterangan String?
+
+  anggota    Anggota  @relation(fields: [anggotaId], references: [id], onDelete: Cascade)
+
+  @@map("absensi")
+}

@@ -1,0 +1,20 @@
+
+generator client {
+  provider            = "prisma-client"
+  output              = "./generated"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Absensi {
+  id      Int      @id @default(autoincrement())
+  nama    String
+  jabatan String
+  tanggal DateTime
+  status  String
+
+  @@map("absensi")
+}

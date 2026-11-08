@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Pengguna {
+  id           Int      @id @default(autoincrement())
+  nim          String   @unique
+  nama         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("mahasiswa")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("pengguna")
+}
+
+model Absensi {
+  id            Int      @id @default(autoincrement())
+  nim           String
+  namaMahasiswa String
+  kelas         String
+  tanggal       DateTime
+  status        String
+  keterangan    String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("absensi")
+}
+

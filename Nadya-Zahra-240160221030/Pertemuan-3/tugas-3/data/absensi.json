@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ABS001",
+    "id_anggota": "AGT001",
+    "nama": "Kim Taehyung",
+    "nim": "260160221012",
+    "jabatan": "Ketua",
+    "kegiatan": "Rapat Pembahasan LDKM",
+    "tanggal": "2026-09-27",
+    "status": "hadir"
+  },
+  {
+    "id": "ABS001",
+    "id_anggota": "AGT002",
+    "nama": "Kim Jennie",
+    "nim": "260160221011",
+    "jabatan": "Wakil Ketua",
+    "kegiatan": "Rapat Pembahasan LDKM",
+    "tanggal": "2026-09-27",
+    "status": "hadir"
+  },
+  {
+    "id": "ABS002",
+    "id_anggota": "AGT003",
+    "nama": "Park Jimin",
+    "nim": "260160221013",
+    "jabatan": "Sekretaris",
+    "kegiatan": "Rapat Program Kerja",
+    "tanggal": "2026-09-28",
+    "status": "izin"
+  },
+  {
+    "id": "ABS002",
+    "id_anggota": "AGT004",
+    "nama": "Park Chae-young",
+    "nim": "260160221014",
+    "jabatan": "Bendahara",
+    "kegiatan": "Rapat Program Kerja",
+    "tanggal": "2026-09-28",
+    "status": "hadir"
+  }
+]

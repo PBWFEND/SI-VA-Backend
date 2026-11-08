@@ -1,0 +1,27 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "./generated"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Anggota {
+  id_anggota String    @id
+  nama       String
+  nim        String    @unique
+  jabatan    String
+  absensi    Absensi[]
+}
+
+model Absensi {
+  id_absensi String  @id
+  id_anggota String
+  kegiatan   String
+  tanggal    String
+  status     String
+
+  anggota Anggota @relation(fields: [id_anggota], references: [id_anggota])
+}

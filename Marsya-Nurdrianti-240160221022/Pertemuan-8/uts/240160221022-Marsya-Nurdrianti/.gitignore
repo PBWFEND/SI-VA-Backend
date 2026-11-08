@@ -1,0 +1,18 @@
+node_modules/
+dist/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Generated Prisma Client
+/generated/
+generated/
+
+# Local SQLite database
+/prisma/*.db
+/prisma/*.db-journal
+*.db
+*.db-journal
+

@@ -1,0 +1,17 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Buku {
+  id          Int     @id @default(autoincrement())
+  judul       String
+  penulis     String
+  kategori    String
+  tersedia    Boolean @default(true)
+  tahunTerbit Int
+}

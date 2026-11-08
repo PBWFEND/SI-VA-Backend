@@ -1,0 +1,23 @@
+import { Router } from "express";
+import { absensiController } from "../controller/absensi.controller.ts";
+
+const router = Router();
+
+// GET /api/absensi — Mengambil seluruh data absensi (dengan opsi filter ?status=...)
+router.get("/", absensiController.getAll);
+
+// GET /api/absensi/:id — Mengambil detail data satu catatan absensi berdasarkan ID
+router.get("/:id", absensiController.getById);
+
+// POST /api/absensi — Menambahkan catatan data absensi baru
+router.post("/", absensiController.create);
+
+// PATCH /api/absensi/:id — Memperbarui data absensi secara parsial berdasarkan ID
+router.patch("/:id", absensiController.update);
+
+// DELETE /api/absensi/:id — Menghapus data absensi berdasarkan ID (HTTP 204 No Content)
+router.delete("/:id", absensiController.delete);
+
+export default router;
+export { router };
+

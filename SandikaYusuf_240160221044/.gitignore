@@ -2,5 +2,6 @@
 .postman/
 postman/
 
-#node modules
+# Dependencies Node.js
 node_modules/
+**/node_modules/

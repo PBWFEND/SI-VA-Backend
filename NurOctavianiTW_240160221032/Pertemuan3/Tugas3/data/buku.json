@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "judul": "Belajar Node.js",
+    "penulis": "Andi",
+    "tahun": 2024,
+    "stok": 5
+  },
+  {
+    "id": 2,
+    "judul": "Pemrograman Web",
+    "penulis": "Budi",
+    "tahun": 2023,
+    "stok": 3
+  },
+  {
+    "id": 3,
+    "judul": "Dasar-Dasar JavaScript",
+    "penulis": "Siti",
+    "tahun": 2022,
+    "stok": 4
+  }
+]

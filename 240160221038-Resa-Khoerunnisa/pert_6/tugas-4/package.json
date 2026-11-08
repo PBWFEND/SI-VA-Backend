@@ -1,0 +1,23 @@
+
+{
+  "name": "tugas-4-absensi-organisasi",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
+  },
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "better-sqlite3": "^13.0.3",
+    "dotenv": "^16.0.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "prisma": "^7.10.0"
+  }
+}

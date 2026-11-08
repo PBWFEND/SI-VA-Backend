@@ -1,0 +1,27 @@
+
+{
+  "name": "tugas-5",
+  "version": "1.0.0",
+  "description": "REST API Absensi dengan Express.js dan Prisma",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "node --experimental-strip-types src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@prisma/adapter-libsql": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.5",
+    "prisma": "^7.10.1",
+    "typescript": "^7.0.2"
+  }
+}

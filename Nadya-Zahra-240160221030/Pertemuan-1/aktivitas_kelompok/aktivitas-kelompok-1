@@ -1,0 +1,53 @@
+# Aktivitas Kelompok — Pertemuan 1
+
+## Identitas Kelompok
+
+**Anggota Kelompok 3:**
+1. Della Kartika
+2. Nadya Zahra Aulia
+3. Rico Muhammad F
+4. Nabilla Natasya Putri
+
+## Studi Kasus
+
+Studi kasus yang dibahas dalam aktivitas kelompok adalah YouTube dengan fokus pada analisis interaksi aplikasi, pemetaan HTTP Method, struktur endpoint, request dan response, HTTP Status Code, serta prinsip RESTful API.
+
+##  Presentasi PDF
+
+[Klik untuk membuka presentasi ](https://canva.link/0kh14rx3z5mmhxz)
+
+## Struktur Materi yang Dibahas
+
+### 1. Judul
+Pengenalan topik aktivitas kelompok dan studi kasus yang digunakan, yaitu Analisis Interaksi dan REST API pada Aplikasi YouTube.
+
+### 2. Tujuan
+Menjelaskan tujuan analisis terhadap aplikasi YouTube dari sudut pandang komunikasi client-server dan penerapan konsep REST API.
+
+### 3. Bedah Kasus Youtube
+Menganalisis penggunaan YouTube sebagai studi kasus dengan mengidentifikasi proses dan interaksi yang terjadi antara pengguna, aplikasi YouTube, server, dan database.
+
+### 4. Analisis Interaksi 
+Menganalisis contoh interaksi pengguna dengan sistem YouTube, mulai dari pengguna mengirimkan request hingga sistem memberikan response, seperti saat mencari video, membuka video, memberikan komentar, atau melakukan login.
+
+### 5. Pemetaan HTTP Method
+Memetakan penggunaan HTTP Method seperti GET, POST, PUT/PATCH, dan DELETE berdasarkan kebutuhan operasi pada sistem YouTube.
+
+### 6. Struktur Endpoint
+Membahas struktur endpoint yang digunakan untuk merepresentasikan resource dalam API, seperti video, pengguna, komentar, playlist, dan channel.
+
+### 7. Request & Response
+Membahas struktur data yang dikirim melalui request dan data yang diterima melalui response. Data dapat menggunakan format JSON untuk pertukaran informasi antara client dan server.
+
+### 8. HTTP Status Code
+Membahas penggunaan HTTP Status Code seperti 200 OK, 201 Created, 204 No Content, 400 Bad Request, 404 Not Found, dan 500 Internal Server Error sesuai dengan kondisi response dari server.
+
+### 9. Prinsip RESTful
+Membahas penerapan prinsip RESTful API pada studi kasus YouTube, meliputi penggunaan resource, endpoint, HTTP Method, serta HTTP Status Code yang sesuai dengan operasi yang dilakukan.
+
+### 10. Kesimpulan
+Merangkum hasil analisis kelompok mengenai bagaimana konsep REST API dan komunikasi client-server dapat diterapkan dan dipahami melalui studi kasus aplikasi YouTube.
+
+## Dokumentasi
+
+File ini digunakan sebagai dokumentasi singkat aktivitas kelompok dan struktur materi yang dipresentasikan.
