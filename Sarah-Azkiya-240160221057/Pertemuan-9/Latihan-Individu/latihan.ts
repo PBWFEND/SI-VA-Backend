@@ -11,7 +11,7 @@
 
 import crypto from "node:crypto";
 import { promisify } from "node:util";
-import { prisma } from "../../Pertemuan-8/uts/240160221057-sarahazkiya/client.ts";
+import { prisma } from "../../Pertemuan-8/Tugas/uts/240160221057-sarahazkiya/client.ts";
 
 const scryptAsync = promisify(crypto.scrypt);
 

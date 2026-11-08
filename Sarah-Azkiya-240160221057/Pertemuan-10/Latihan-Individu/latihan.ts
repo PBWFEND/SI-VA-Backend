@@ -10,11 +10,11 @@
  */
 
 import jwt, { type SignOptions } from "jsonwebtoken";
-import { prisma } from "../../Pertemuan-8/uts/240160221057-sarahazkiya/client.ts";
+import { prisma } from "../../Pertemuan-8/Tugas/uts/240160221057-sarahazkiya/client.ts";
 import {
   hashPassword,
   verifyPassword,
-} from "../../Pertemuan-8/uts/240160221057-sarahazkiya/src/service/auth.service.ts";
+} from "../../Pertemuan-8/Tugas/uts/240160221057-sarahazkiya/src/service/auth.service.ts";
 
 export const ROLES = {
   MAHASISWA: "mahasiswa",

@@ -13,12 +13,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dbPath = path.resolve(__dirname, "../uts/240160221057-sarahazkiya/prisma/dev.db");
+const dbPath = path.resolve(__dirname, "../Tugas/uts/240160221057-sarahazkiya/prisma/dev.db");
 process.env.DATABASE_URL = `file:${dbPath}`;
 
-import { prisma } from "../uts/240160221057-sarahazkiya/client.ts";
-import { bukuService, NotFoundError, ConflictError } from "../uts/240160221057-sarahazkiya/src/service/buku.service.ts";
-import { anggotaService } from "../uts/240160221057-sarahazkiya/src/service/anggota.service.ts";
+import { prisma } from "../Tugas/uts/240160221057-sarahazkiya/client.ts";
+import { bukuService, NotFoundError, ConflictError } from "../Tugas/uts/240160221057-sarahazkiya/src/service/buku.service.ts";
+import { anggotaService } from "../Tugas/uts/240160221057-sarahazkiya/src/service/anggota.service.ts";
 
 // ================================================================
 // 1. VALIDASI DOMAIN BUKU (LATIHAN INDIVIDU)

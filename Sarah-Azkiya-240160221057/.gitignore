@@ -5,3 +5,22 @@ postman/
 # Node.js
 node_modules/
 **/node_modules/
+
+# Environment Variables
+.env
+**/.env
+.env.local
+.env.production
+.env.*.local
+
+# SQLite Database
+*.db
+*.db-journal
+**/*.db
+**/*.db-journal
+
+# Prisma & Build artifacts
+generated/
+**/generated/
+dist/
+**/dist/
