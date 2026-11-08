@@ -1,0 +1,30 @@
+{
+  "name": "tugas-5",
+  "version": "1.0.0",
+  "description": "REST API Mahasiswa dengan Pola Service/Controller menggunakan Express dan Prisma",
+  "main": "server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types server.ts",
+    "dev": "node --watch --experimental-strip-types server.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
+  },
+  "keywords": [],
+  "author": "Faishal Rizky Fadhilah",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "better-sqlite3": "^13.0.3",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.2",
+    "prisma": "^7.10.1",
+    "typescript": "^7.0.2"
+  }
+}
+
