@@ -130,6 +130,22 @@
       <sub>240160221003</sub>
     </td>
     <td align="center">
+      <a href="https://github.com/Devaldy12">
+        <img src="https://avatars.githubusercontent.com/u/273492452?v=4&s=200" width="100px;" alt="Devaldy12"/><br>
+        <sub><b>Devaldy12</b></sub>
+      </a><br>
+      <sub>240160221050</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/240160221041-Rissa">
+        <img src="https://avatars.githubusercontent.com/u/273492323?v=4&s=200" width="100px;" alt="240160221041-Rissa"/><br>
+        <sub><b>240160221041-Rissa</b></sub>
+      </a><br>
+      <sub>240160221041</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
       <a href="https://github.com/sarahazkiya19">
         <img src="https://avatars.githubusercontent.com/u/273493544?v=4&s=200" width="100px;" alt="sarahazkiya19"/><br>
         <sub><b>sarahazkiya19</b></sub>
@@ -143,28 +159,12 @@
       </a><br>
       <sub>240160221038</sub>
     </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/Devaldy12">
-        <img src="https://avatars.githubusercontent.com/u/273492452?v=4&s=200" width="100px;" alt="Devaldy12"/><br>
-        <sub><b>Devaldy12</b></sub>
-      </a><br>
-      <sub>240160221050</sub>
-    </td>
     <td align="center">
       <a href="https://github.com/240160221011-FaatinAshri">
         <img src="https://avatars.githubusercontent.com/u/273489076?v=4&s=200" width="100px;" alt="240160221011-FaatinAshri"/><br>
         <sub><b>240160221011-FaatinAshri</b></sub>
       </a><br>
       <sub>240160221011</sub>
-    </td>
-    <td align="center">
-      <a href="https://github.com/240160221041-Rissa">
-        <img src="https://avatars.githubusercontent.com/u/273492323?v=4&s=200" width="100px;" alt="240160221041-Rissa"/><br>
-        <sub><b>240160221041-Rissa</b></sub>
-      </a><br>
-      <sub>240160221041</sub>
     </td>
   </tr>
   <tr>
@@ -173,7 +173,7 @@
         <img src="https://avatars.githubusercontent.com/u/1296378?v=4&s=200" width="100px;" alt="deLLa"/><br>
         <sub><b>deLLa</b></sub>
       </a><br>
-      <sub>240160221022</sub>
+      <sub>240160221003</sub>
     </td>
     <td align="center">
       <a href="https://github.com/faishal">
