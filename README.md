@@ -54,18 +54,18 @@
   </tr>
   <tr>
     <td align="center">
+      <a href="https://github.com/NabillaNatasya">
+        <img src="https://avatars.githubusercontent.com/u/274437981?v=4&s=200" width="100px;" alt="NabillaNatasya"/><br>
+        <sub><b>Nabilla Natasya Putri</b></sub>
+      </a><br>
+      <sub>240160221029</sub>
+    </td>
+    <td align="center">
       <a href="https://github.com/240160221013-byte">
         <img src="https://avatars.githubusercontent.com/u/280607233?v=4&s=200" width="100px;" alt="240160221013-byte"/><br>
         <sub><b>Faishal Rizky Fadhilah-240160221013</b></sub>
       </a><br>
       <sub>240160221013</sub>
-    </td>
-    <td align="center">
-      <a href="https://github.com/yysBotX">
-        <img src="https://avatars.githubusercontent.com/u/294550100?v=4&s=200" width="100px;" alt="yysBotX"/><br>
-        <sub><b>yysBotX</b></sub>
-      </a><br>
-      <sub>Bot/Maintainer</sub>
     </td>
     <td align="center">
       <a href="https://github.com/240160221032NurOctavianiTW">
@@ -77,13 +77,6 @@
   </tr>
   <tr>
     <td align="center">
-      <a href="https://github.com/240160221001-bash">
-        <img src="https://avatars.githubusercontent.com/u/284205155?v=4&s=200" width="100px;" alt="240160221001-bash"/><br>
-        <sub><b>240160221001-bash</b></sub>
-      </a><br>
-      <sub>240160221001</sub>
-    </td>
-    <td align="center">
       <a href="https://github.com/YosepAipura48">
         <img src="https://avatars.githubusercontent.com/u/273491522?v=4&s=200" width="100px;" alt="YosepAipura48"/><br>
         <sub><b>yosep adipura h - 240160221048</b></sub>
@@ -91,14 +84,28 @@
       <sub>240160221048</sub>
     </td>
     <td align="center">
+      <a href="https://github.com/yysBotX">
+        <img src="https://avatars.githubusercontent.com/u/294550100?v=4&s=200" width="100px;" alt="yysBotX"/><br>
+        <sub><b>yysBotX</b></sub>
+      </a><br>
+      <sub>Bot/Maintainer</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/240160221001-bash">
+        <img src="https://avatars.githubusercontent.com/u/284205155?v=4&s=200" width="100px;" alt="240160221001-bash"/><br>
+        <sub><b>240160221001-bash</b></sub>
+      </a><br>
+      <sub>240160221001</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
       <a href="https://github.com/240160221030-NadyaZahraAulia">
         <img src="https://avatars.githubusercontent.com/u/267926842?v=4&s=200" width="100px;" alt="240160221030-NadyaZahraAulia"/><br>
         <sub><b>Nadya Zahra Aulia</b></sub>
       </a><br>
       <sub>240160221030</sub>
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <a href="https://github.com/240160221026-commit">
         <img src="https://avatars.githubusercontent.com/u/266216367?v=4&s=200" width="100px;" alt="240160221026-commit"/><br>
@@ -112,13 +119,6 @@
         <sub><b>240160221036</b></sub>
       </a><br>
       <sub>240160221036</sub>
-    </td>
-    <td align="center">
-      <a href="https://github.com/NabillaNatasya">
-        <img src="https://avatars.githubusercontent.com/u/274437981?v=4&s=200" width="100px;" alt="NabillaNatasya"/><br>
-        <sub><b>Nabilla Natasya Putri</b></sub>
-      </a><br>
-      <sub>240160221029</sub>
     </td>
   </tr>
   <tr>
