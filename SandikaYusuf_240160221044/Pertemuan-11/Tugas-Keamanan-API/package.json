@@ -1,0 +1,47 @@
+{
+  "name": "api-security-mahasiswa-sandika",
+  "version": "1.0.0",
+  "description": "Implementasi Keamanan Backend dan API — Sandika Yusuf Permana (240160221044)",
+  "main": "server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types server.ts",
+    "dev": "node --watch --experimental-strip-types server.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types test.ts"
+  },
+  "keywords": [
+    "express",
+    "prisma",
+    "sqlite",
+    "security",
+    "helmet",
+    "cors",
+    "rate-limit",
+    "jwt",
+    "typescript"
+  ],
+  "author": "Sandika Yusuf Permana <240160221044>",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "better-sqlite3": "^13.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.11.0",
+    "prisma": "^7.10.1",
+    "typescript": "^5.9.3"
+  }
+}
+
