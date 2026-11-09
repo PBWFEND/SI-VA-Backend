@@ -290,7 +290,7 @@ Berikut adalah daftar lengkap endpoint beserta contoh pengujian menggunakan `cur
 - **URL**: `/mahasiswa/:nim`
 - **Contoh curl (Data Ditemukan)**:
   ```bash
-  curl -i -X GET http://localhost:3008/mahasiswa/240160221028
+  curl -i -X GET http://localhost:3008/mahasiswa/240160221044
   ```
 - **Contoh Respons (200 OK)**:
   ```json
@@ -419,7 +419,7 @@ Berikut adalah daftar lengkap endpoint beserta contoh pengujian menggunakan `cur
 - **URL**: `/mahasiswa/:nim`
 - **Contoh curl (Data Berhasil Dihapus)**:
   ```bash
-  curl -i -X DELETE http://localhost:3008/mahasiswa/240160221028
+  curl -i -X DELETE http://localhost:3008/mahasiswa/240160221044
   ```
 - **Respons (204 No Content)**:
   *(Tidak ada body respons - Header HTTP Status 204 No Content)*

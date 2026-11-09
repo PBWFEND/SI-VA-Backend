@@ -1,7 +1,7 @@
 /**
  * Pertemuan 6 — Latihan Resource Pengguna dengan Prisma
- * Nama: Muhammad Zaky
- * NIM: 240160221028
+ * Nama: Sandika Yusuf Permana
+ * NIM: 240160221044
  * Tujuan: Menerapkan operasi create, update, dan delete pada model pengguna.
  * Jalankan: npx prisma migrate dev --name pengguna lalu node --experimental-strip-types latihan.ts
  */

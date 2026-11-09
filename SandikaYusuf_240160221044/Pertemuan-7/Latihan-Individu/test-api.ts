@@ -140,9 +140,9 @@ async function runTests() {
       );
     }
 
-    // 9. GET /pengguna?nim=240160221028 (TODO 1: Filter NIM cocok / 200 OK)
+    // 9. GET /pengguna?nim=240160221044 (TODO 1: Filter NIM cocok / 200 OK)
     {
-      const res = await fetch(`${baseUrl}/pengguna?nim=240160221028`);
+      const res = await fetch(`${baseUrl}/pengguna?nim=240160221044`);
       const body = await res.json() as any;
       assert(
         res.status === 200 &&

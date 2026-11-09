@@ -10,7 +10,7 @@
     "prisma:migrate": "prisma migrate dev"
   },
   "keywords": [],
-  "author": "Faishal Rizky Fadhilah",
+  "author": "Sandika Yusuf Permana",
   "license": "ISC",
   "type": "module",
   "dependencies": {

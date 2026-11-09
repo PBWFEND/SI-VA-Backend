@@ -232,7 +232,7 @@ Seluruh perintah dirancang secara **portabel** menggunakan path relatif dinamis 
 
 ### Langkah 1: Masuk ke Direktori Latihan Pertemuan 8
 ```powershell
-cd MuhammadZaky_240160221028/Pertemuan-8/Latihan-Individu
+cd Sandikayusuf_240160221044/Pertemuan-8/Latihan-Individu
 ```
 
 ### Langkah 2: Menjalankan Pengujian Fungsional dan Negatif (25 Skenario)
