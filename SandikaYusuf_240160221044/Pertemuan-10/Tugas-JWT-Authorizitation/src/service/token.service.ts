@@ -25,7 +25,7 @@ const getJwtSecret = (): string => {
     if (process.env.NODE_ENV === "production") {
       throw new Error("FATAL: JWT_SECRET belum dikonfigurasi di environment variable");
     }
-    return "zaky_academic_jwt_secret_key_super_secure_2026_unsap";
+    return "sandika_academic_jwt_secret_key_super_secure_2026_unsap";
   }
   return secret.trim();
 };

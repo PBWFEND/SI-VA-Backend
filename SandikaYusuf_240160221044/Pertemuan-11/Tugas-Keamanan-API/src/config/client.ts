@@ -10,7 +10,7 @@ const projectRoot = path.resolve(__dirname, "../../");
 
 let dbUrl = process.env.DATABASE_URL;
 if (!dbUrl || dbUrl.startsWith("file:./")) {
-  const relativePart = dbUrl ? dbUrl.replace(/^file:\.?\/?/, "") : "prisma/security-zaky.db";
+  const relativePart = dbUrl ? dbUrl.replace(/^file:\.?\/?/, "") : "prisma/security-sandika.db";
   const absoluteDbPath = path.resolve(projectRoot, relativePart).replace(/\\/g, "/");
   dbUrl = `file:${absoluteDbPath}`;
 }
