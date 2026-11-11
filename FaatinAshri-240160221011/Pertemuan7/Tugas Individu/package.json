@@ -1,0 +1,27 @@
+{
+  "name": "tugas-5-mahasiswa",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --experimental-strip-types --watch app.ts",
+    "start": "node --experimental-strip-types app.ts",
+    "generate": "prisma generate",
+    "migrate": "prisma migrate dev",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.10.0",
+    "better-sqlite3": "^13.0.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "@prisma/client": "^7.10.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.3",
+    "@types/node": "^26.0.0",
+    "prisma": "^7.10.0",
+    "typescript": "^7.0.2"
+  }
+}

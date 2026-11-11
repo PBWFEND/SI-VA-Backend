@@ -1,0 +1,19 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "./generated"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Mahasiswa {
+  id       Int    @id @default(autoincrement())
+  nim      String @unique
+  nama     String
+  prodi    String
+  angkatan Int
+
+  @@map("mahasiswa")
+}
