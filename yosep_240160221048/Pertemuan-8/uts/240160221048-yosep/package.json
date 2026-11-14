@@ -18,7 +18,7 @@
     "mahasiswa",
     "uts"
   ],
-  "author": "Faishal Rizky Fadhilah",
+  "author": "Yosep Adipura H",
   "license": "ISC",
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.10.1",

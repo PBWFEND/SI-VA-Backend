@@ -47,7 +47,7 @@ Repositori ini berisi implementasi resmi **UTS Mini Project Backend** berupa lay
 Struktur proyek disusun mengikuti ketentuan resmi §5.1:
 
 ```text
-uts/240160221044-Sandika-yusuf/
+uts/240160221048-Yosep-Adipura/
 ├── app.ts                  # Konfigurasi middleware Express, routing, 404, dan central error handler
 ├── server.ts               # Inisialisasi HTTP server, startup banner, dan graceful shutdown
 ├── client.ts               # Facade Prisma Client singleton di root (§5.1 & §5.3)
@@ -353,8 +353,8 @@ Berikut adalah daftar lengkap endpoint beserta contoh pengujian menggunakan `cur
   curl -i -X POST http://localhost:3008/mahasiswa \
     -H "Content-Type: application/json" \
     -d '{
-      "nim": "240160221044",
-      "nama": "Sandika Duplicate",
+      "nim": "240160221048",
+      "nama": "Yosep Duplicate",
       "prodi": "Informatika",
       "angkatan": 2024
     }'
@@ -363,7 +363,7 @@ Berikut adalah daftar lengkap endpoint beserta contoh pengujian menggunakan `cur
   ```json
   {
     "success": false,
-    "message": "Mahasiswa dengan NIM '240160221044' sudah terdaftar"
+    "message": "Mahasiswa dengan NIM '240160221048' sudah terdaftar"
   }
   ```
 

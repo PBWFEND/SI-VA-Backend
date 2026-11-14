@@ -110,7 +110,7 @@ Body:
 
 ### Contoh request PATCH
 
-`PATCH /mahasiswa/240160221044`
+`PATCH /mahasiswa/240160221048`
 
 ```json
 {
@@ -123,7 +123,7 @@ Kirim hanya field yang ingin diperbarui.
 
 ### Contoh request DELETE
 
-`DELETE /mahasiswa/240160221044`
+`DELETE /mahasiswa/240160221048`
 
 Tidak memerlukan request body.
 
@@ -152,8 +152,8 @@ Pastikan server berjalan sebelum mengirim request.
 
 Hasil pengujian tersimpan pada folder `screenshot/`:
 1. `01-post-mahasiswa.png` — Berhasil menambahkan data mahasiswa.
-2. `02-patch-mahasiswa-240160221044.png` — Berhasil memperbarui data mahasiswa NIM 240160221044.
-3. `03-delete-mahasiswa-240160221044.png` — Berhasil menghapus data mahasiswa NIM 240160221044.
+2. `02-patch-mahasiswa-240160221048.png` — Berhasil memperbarui data mahasiswa NIM 240160221048.
+3. `03-delete-mahasiswa-240160221048.png` — Berhasil menghapus data mahasiswa NIM 240160221048.
 4. `04-post-mahasiswa-validasi.png` — Validasi field wajib saat POST data mahasiswa.
 5. `05-post-mahasiswa-validasi-2.png` — Validasi error format saat POST data mahasiswa.
 
