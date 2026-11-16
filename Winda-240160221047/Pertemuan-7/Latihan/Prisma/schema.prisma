@@ -1,0 +1,19 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "./generated"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Pengguna {
+  id     Int    @id @default(autoincrement())
+  nim    String @unique
+  nama   String
+  email  String @unique
+  role   String @default("mahasiswa")
+
+  @@map("pengguna")
+}

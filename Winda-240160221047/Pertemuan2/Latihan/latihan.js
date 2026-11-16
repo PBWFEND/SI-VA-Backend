@@ -1,0 +1,135 @@
+/**
+ * ============================================================
+ * Latihan Individu Pertemuan 2 — ES6+ & Async
+ * ============================================================
+ * Lengkapi setiap bagian latihan di file ini. Jalankan:
+ *   node latihan.js
+ *
+ * Semua latihan meniru kode backend nyata. Setelah selesai,
+ * wajib bisa menjelaskan tiap baris (kontrak AI Pertemuan 1).
+ */
+
+const { formatRupiah, hitungDiskon } = require("./modul-02");
+
+// ---------- Data ----------
+const transaksi = [
+  { id: 1, nama: "Kopi Hitam", harga: 15000, jumlah: 2 },
+  { id: 2, nama: "Roti Bakar", harga: 12000, jumlah: 3 },
+  { id: 3, nama: "Air Mineral", harga: 5000, jumlah: 10 },
+];
+
+async function jalankanLatihan() {
+  // =========================================================
+  // LATIHAN 1 — Destructuring + template literal
+  // Ambil nama dan harga item PERTAMA tanpa transaksi[0].nama
+  // Cetak: "Item pertama: Kopi Hitam (Rp15.000)"
+  // =========================================================
+  const [itemPertama] = transaksi;
+  const { nama: namaPertama, harga: hargaPertama } = itemPertama;
+  console.log(`Item pertama: ${namaPertama} (${formatRupiah(hargaPertama)})`);
+  console.log("-----------------------------------------");
+
+  // =========================================================
+  // LATIHAN 2 — map + reduce
+  // Hitung subtotal tiap item (harga x jumlah) lalu TOTAL struk
+  // Gunakan map → subtotal, reduce → total. Cetak keduanya.
+  // =========================================================
+  const subtotalItem = transaksi.map(item => ({
+    ...item,
+    subtotal: item.harga * item.jumlah
+  }));
+
+  const totalStruk = subtotalItem.reduce((acc, curr) => acc + curr.subtotal, 0);
+
+  console.log("Subtotal tiap item:");
+  subtotalItem.forEach(i => console.log(`- ${i.nama}: ${formatRupiah(i.subtotal)}`));
+  console.log(`Total Struk: ${formatRupiah(totalStruk)}`);
+  console.log("-----------------------------------------");
+
+  // =========================================================
+  // LATIHAN 3 — filter + spread
+  // Ambil item dengan harga > 10000.
+  // Buat array baru berisi NAMA semua item termahal
+  // menggunakan spread pada array hasil filter.
+  // =========================================================
+  const itemMahal = [...transaksi].filter(item => item.harga > 10000);
+  const namaItemMahal = itemMahal.map(item => item.nama);
+
+  console.log("Item dengan harga > Rp10.000:");
+  console.log(namaItemMahal);
+  console.log("-----------------------------------------");
+
+  // =========================================================
+  // LATIHAN 4 — Promise + async/await
+  // Buat fungsi prosesPembayaran(total, delayMs) yang mengembalikan
+  // Promise: setelah delayMs → resolve { status: "lunas", total, kembali: total - diskon }
+  // Diskon 10% jika total > 100000 (pakai hitungDiskon dari modul-02).
+  // Panggil dengan await, cetak hasilnya.
+  // =========================================================
+  const prosesPembayaran = (total, delayMs) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      let totalAkhir = total;
+      let potongan = 0;
+
+      if (total > 100000) {
+        // Tambahkan angka 10 sebagai argumen persen diskon
+        totalAkhir = hitungDiskon(total, 10); 
+        potongan = total - totalAkhir;
+      }
+
+      resolve({
+        status: "lunas",
+        total: totalAkhir,
+        kembali: potongan
+      });
+    }, delayMs);
+  });
+};
+  const hasilBayar = await prosesPembayaran(totalStruk, 1000);
+  console.log("Hasil Pembayaran:", hasilBayar);
+  console.log("-----------------------------------------");
+
+  // =========================================================
+  // LATIHAN 5 — Promise.all
+  // Tiga "cabang" mengirim laporan penjualan serentak:
+  //   tunda(200, 50), tunda(300, 80), tunda(100, 70)
+  // (angka kedua = penjualan). Gunakan Promise.all, jumlahkan hasilnya.
+  // Cetak total waktu eksekusi dengan Date.now() — buktikan paralel.
+  // =========================================================
+  const waktuMulai = Date.now();
+  const laporanCabang = await Promise.all([
+    tunda(200, 50),
+    tunda(300, 80),
+    tunda(100, 70)
+  ]);
+
+  const totalPenjualanCabang = laporanCabang.reduce((acc, curr) => acc + curr, 0);
+  const waktuSelesai = Date.now() - waktuMulai;
+
+  console.log(`Total Laporan 3 Cabang: ${totalPenjualanCabang}`);
+  console.log(`Waktu eksekusi paralel: ${waktuSelesai} ms`);
+  console.log("-----------------------------------------");
+
+  // =========================================================
+  // LATIHAN 6 — BONUS: mini formatter struk
+  // Cetak struk rapi memakai map + template literal multi-baris:
+  //   1. Kopi Hitam         x2  Rp30.000
+  //   2. Roti Bakar         x3  Rp36.000
+  //   ...
+  // Gunakan formatRupiah dari modul-02 dan .padEnd(20).
+  // =========================================================
+  console.log("Mini Formatter Struk:");
+  subtotalItem.forEach((item, index) => {
+    const nomor = `${index + 1}.`.padEnd(3, " ");
+    const namaItem = item.nama.padEnd(20, " ");
+    const qty = `x${item.jumlah}`.padEnd(5, " ");
+    const subtotalStr = formatRupiah(item.subtotal);
+    console.log(`${nomor} ${namaItem} ${qty} ${subtotalStr}`);
+  });
+}
+
+const tunda = (ms, nilai) => new Promise((resolve) => setTimeout(() => resolve(nilai), ms));
+
+// Jalankan fungsi utama
+jalankanLatihan();
