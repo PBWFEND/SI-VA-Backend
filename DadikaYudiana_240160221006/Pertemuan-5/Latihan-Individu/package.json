@@ -1,0 +1,16 @@
+{
+  "name": "latihan-individu",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "latihan.js",
+  "scripts": {
+    "start": "node latihan.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
